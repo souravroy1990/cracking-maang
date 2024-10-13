@@ -10,6 +10,7 @@ Complexity
     Space complexity: O(N)
 
 """
+
 from typing import List
 
 
@@ -24,7 +25,6 @@ class Solution:
         for i in range(length - 1):
             if max_points > length - i:
                 break
-
             plane_points = {}
 
             for j in range(i + 1, length):
@@ -32,11 +32,16 @@ class Solution:
                 x2, y2 = points[j]
 
                 if x1 == x2:
-                    k = float('inf')
+                    k = float("inf")
                 else:
                     k = (y1 - y2) / (x1 - x2)
 
                 plane_points[k] = plane_points[k] + 1 if k in plane_points else 2
-                max_points = max(max_points, plane_points[k])
+                max_points = max(plane_points[k], max_points)
 
         return max_points
+
+
+c = Solution()
+mp = c.maxPoints(points=[[1, 1], [3, 2], [5, 3], [4, 1], [2, 3], [1, 4]])
+print(mp)

@@ -25,3 +25,6 @@ def singleNonDuplicate2(nums):
         else:
             end = mid - 1
     return nums[start]
+
+nums = [1,1,2,2,3,4,4,5,5,9,9]
+print(singleNonDuplicate2(nums))

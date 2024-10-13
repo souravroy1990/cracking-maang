@@ -9,7 +9,7 @@ Solution 2: flat the matrix, min heapify, then pop from heap, O(N) time, O(N) sp
 Solution 3: use max heap, heappush to heap, and pop when len(heap) is larger than k O(N*logN) time, O(k) space
 """
 
-
+# Gives best time in leetcode
 def solution1(matrix: list, k: int) -> int:
     arr = []
     for i in range(len(matrix)):

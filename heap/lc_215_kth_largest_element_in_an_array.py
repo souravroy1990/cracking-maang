@@ -10,23 +10,33 @@ When you insert, you must do heapify()
 import heapq
 
 
+# class Solution:
+#     def findKthLargest(self, nums: list[int], k: int) -> int:
+#         heap = []
+#         size = 0  # size of the heap
+
+#         for num in nums:
+#             heapq.heappush(heap, num)
+#             size += 1
+
+#             # When the size is bigger than k, then we need to pop the element.
+#             if size > k:
+#                 heapq.heappop(heap)
+#                 size -= 1
+
+#         # Now the min heap is of size k, so the top element will be the kth largest element
+#         return heapq.heappop(heap)
+
 class Solution:
     def findKthLargest(self, nums: list[int], k: int) -> int:
-        heap = []
-        size = 0  # size of the heap
+        minHeap = []
 
         for num in nums:
-            heapq.heappush(heap, num)
-            size += 1
+            heapq.heappush(minHeap, num)
+            if len(minHeap) > k:
+                heapq.heappop(minHeap)
 
-            # When the size is bigger than k, then we need to pop the element.
-            if size > k:
-                heapq.heappop(heap)
-                size -= 1
-
-        # Now the min heap is of size k, so the top element will be the kth largest element
-        return heapq.heappop(heap)
-
+        return minHeap[0]
 
 nums = [1, 4, 5, 2, 9, 7]
 k = 2

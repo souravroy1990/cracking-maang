@@ -31,3 +31,8 @@ class Solution:
                 balance = 0
 
         return start
+
+c = Solution()
+gas = [1,2,3,4,5]
+cost = [3,4,5,1,2]
+print(c.canCompleteCircuit(gas,cost))

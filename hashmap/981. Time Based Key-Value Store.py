@@ -48,3 +48,39 @@ class TimeMap:
 # obj.set(key,value,timestamp)
 # param_2 = obj.get(key,timestamp)
 
+class TimeMap:
+
+    def __init__(self):
+        self.map = {}  # list of (val, timestamp)
+
+    def set(self, key: str, value: str, timestamp: int) -> None:
+        if key not in self.map.keys():
+            self.map[key] = []
+        self.map[key].append([value, timestamp])
+
+    def get(self, key: str, timestamp: int) -> str:
+        if key not in self.map.keys():
+            return ''
+
+        # O(logN) Binary search can be used because when adding data, the timestamp is already sorted
+        result = ''
+        values = self.map.get(key, [])  # list of (val, timestamp)
+
+        left, right = 0, len(values) - 1
+        while left <= right:
+            mid = (right + left) // 2
+            if values[mid][1] <= timestamp:
+                result = values[mid][0]
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        return result
+
+obj = TimeMap()
+obj.set("foo","bar",1)
+print(obj.get("foo",1))
+print(obj.get("foo",3))
+obj.set("foo","bar2",4)
+print(obj.get("foo",4))
+print(obj.get("foo",5))
