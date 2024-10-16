@@ -22,8 +22,9 @@ class ListNode:
 
 def delete_middle_node(node: ListNode) -> bool:
     if node is None or node.next is None:
-        return False
+        # return False
+        pass
     
     node.val = node.next.val 
     node.next = node.next.next 
-    return True 
+    # return True 
